@@ -1,0 +1,31 @@
+# Dependencias de Node.js
+/node_modules
+
+# Archivos de compilación de TypeScript
+/dist
+/build
+
+# Archivos de configuración de IDE
+/.vscode
+.idea
+
+# Archivos de entorno
+.env
+
+# Archivos generados por el sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de PM2
+pids
+*.pid
+*.log
+
+# Configuración de cobertura de prueba
+coverage/
+*.lcov
+
+# Archivos generados por el frontend (ej. Vite)
+frontend/node_modules
+frontend/.vite
+frontend/dist
