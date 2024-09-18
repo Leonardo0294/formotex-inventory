@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios'; 
 import { useNavigate } from 'react-router-dom';
+import '../styles/EquipmentList.css'; // Asegúrate de que esta ruta sea correcta
 
 const EquipmentList: React.FC = () => {
   const [equipmentList, setEquipmentList] = useState<any[]>([]); // Estado para guardar la lista de equipos
@@ -11,7 +12,7 @@ const EquipmentList: React.FC = () => {
     const fetchEquipment = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/equipment/equipment'); // Ruta para obtener equipos
-        setEquipmentList(response.data); // Guardar los equipos en el estado
+        setEquipmentList(response.data); 
       } catch (error) {
         console.error('Error fetching equipment:', error);
         alert('Failed to fetch equipment');
@@ -19,14 +20,13 @@ const EquipmentList: React.FC = () => {
     };
 
     fetchEquipment();
-  }, []); // Vacío para ejecutar solo una vez cuando el componente se monta
+  }, []);
 
   // Maneja la eliminación de un equipo
   const handleDelete = async (id: string) => {
     try {
-      // Asegúrate de que la ruta coincide con la del backend
-      await axios.delete(`http://localhost:5000/api/equipment/equipment/:id`); // Elimina el equipo por ID
-      setEquipmentList(equipmentList.filter(item => item.id !== id)); // Actualiza la lista en el estado
+      await axios.delete(`http://localhost:5000/api/equipment/equipment/${id}`); // Elimina el equipo por ID
+      setEquipmentList(equipmentList.filter(item => item.id !== id)); 
       alert('Equipment deleted successfully');
     } catch (error) {
       console.error('Error deleting equipment:', error);
@@ -40,15 +40,15 @@ const EquipmentList: React.FC = () => {
   };
 
   if (equipmentList.length === 0) {
-    return <p>No equipment available.</p>;
+    return <p className="no-equipment-message">No equipment available.</p>;
   }
 
   return (
-    <div>
+    <div className="equipment-list-container">
       <h2>Equipment List</h2>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      <ul className="equipment-list">
         {equipmentList.map((item) => (
-          <li key={item.id} style={{ marginBottom: '20px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
+          <li key={item.id} className="equipment-item">
             <h3>{item.name}</h3>
             <p>{item.description}</p>
             <p>Quantity: {item.quantity}</p>
@@ -58,12 +58,11 @@ const EquipmentList: React.FC = () => {
               <img
                 src={item.image} // Usar la URL completa de la imagen
                 alt={item.name}
-                style={{ maxWidth: '200px', maxHeight: '200px', marginTop: '10px', borderRadius: '8px' }}
               />
             )}
-            <div style={{ marginTop: '10px' }}>
-              <button onClick={() => handleEdit(item.id)} style={{ marginRight: '10px' }}>Edit</button>
-              <button onClick={() => handleDelete(item.id)}>Delete</button>
+            <div className="button-group">
+              <button onClick={() => handleEdit(item.id)} className="edit-button">Edit</button>
+              <button onClick={() => handleDelete(item.id)} className="delete-button">Delete</button>
             </div>
           </li>
         ))}

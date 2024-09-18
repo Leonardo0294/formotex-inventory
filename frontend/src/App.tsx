@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
@@ -8,9 +6,18 @@ import EquipmentList from './components/EquipmentList';
 import Login from './components/Login';
 import UpdateEquipment from './components/UpdateEquipment';
 import Register from './components/Register';
-import formotexBanner from './assets/formotex-banner.jpg';
+import formotexBanner from './assets/computadora1.jpg';
+import image1 from './assets/formotex-banner.jpg'; 
+import image2 from './assets/formotex-banner.jpg';
+import image3 from './assets/formotex-banner.jpg';
 
 const App: React.FC = () => {
+  // Simulate a function to handle log out
+  const handleLogout = () => {
+    // Add your logout logic here
+    console.log('Logging out...');
+  };
+
   return (
     <Router>
       <div className="app-container">
@@ -24,6 +31,7 @@ const App: React.FC = () => {
             <li><Link to="/list">Equipment List</Link></li>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/register">Register</Link></li>
+            <li><Link to="/" onClick={handleLogout} className="navbar-link">Cerrar Sesión</Link></li>
           </ul>
         </nav>
 
@@ -35,6 +43,11 @@ const App: React.FC = () => {
                 <div className="home">
                   <h1>Bienvenidos a Formotex Equipamientos</h1>
                   <img src={formotexBanner} alt="Formotex Equipamientos" className="banner-image" />
+                  <div className="additional-images">
+                    <img src={image1} alt="Additional 1" className="additional-image" />
+                    <img src={image2} alt="Additional 2" className="additional-image" />
+                    <img src={image3} alt="Additional 3" className="additional-image" />
+                  </div>
                 </div>
               }
             />

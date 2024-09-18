@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/UpdateEquipment.css'; // Importar el archivo de estilos
 
 const UpdateEquipment: React.FC = () => {
   const { id } = useParams<{ id: string }>(); 
@@ -13,7 +14,6 @@ const UpdateEquipment: React.FC = () => {
   const [acquisitionDate, setAcquisitionDate] = useState('');
 
   useEffect(() => {
-    // Fetch the equipment data for the given ID
     const fetchEquipment = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/equipment/${id}`);
@@ -23,7 +23,7 @@ const UpdateEquipment: React.FC = () => {
         setDescription(description);
         setQuantity(quantity);
         setLocation(location);
-        setAcquisitionDate(new Date(acquisitionDate).toISOString().split('T')[0]); // Formato para date input
+        setAcquisitionDate(new Date(acquisitionDate).toISOString().split('T')[0]);
       } catch (error) {
         console.error('Error fetching equipment data:', error);
         alert('Error fetching equipment details');
@@ -44,7 +44,7 @@ const UpdateEquipment: React.FC = () => {
         acquisitionDate,
       });
       alert('Equipment updated successfully');
-      navigate('/equipment'); // Navegar de regreso a la lista de equipos después de la actualización
+      navigate('/equipment');
     } catch (error) {
       console.error('Error updating equipment:', error);
       alert('Failed to update equipment');
@@ -52,7 +52,7 @@ const UpdateEquipment: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="update-form" onSubmit={handleSubmit}>
       <h2>Update Equipment</h2>
       <input
         type="text"

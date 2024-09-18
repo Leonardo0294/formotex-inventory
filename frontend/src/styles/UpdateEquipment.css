@@ -1,0 +1,63 @@
+/* UpdateEquipment.css */
+
+/* Estilos generales para el formulario */
+.update-form {
+    max-width: 900px; /* Aumentar el ancho máximo */
+    margin: 0 auto;
+    padding: 40px; /* Incrementar el padding */
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 700px; /* Aumentar la altura mínima aún más */
+    margin-bottom: 80px; /* Más espacio debajo para el footer */
+  }
+  
+  .update-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #003399;
+  }
+  
+  .update-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .update-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #003399;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .update-form button:hover {
+    background-color: #002277;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .update-form {
+      padding: 20px; /* Ajustar padding en pantallas pequeñas */
+    }
+  
+    .update-form h2 {
+      font-size: 1.5rem;
+    }
+  
+    .update-form button {
+      font-size: 0.9rem;
+    }
+  }
+  

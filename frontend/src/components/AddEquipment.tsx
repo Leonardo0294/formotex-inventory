@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useEquipment } from '../components/EquipmentContext';
+import '../styles/AddEquipment.css';  // Importar el archivo CSS
 
 const AddEquipment: React.FC = () => {
   const [name, setName] = useState('');
@@ -12,13 +13,11 @@ const AddEquipment: React.FC = () => {
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null);
   const { addEquipment } = useEquipment(); // Usa el contexto
 
-  // Maneja el cambio de imagen
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setImage(file);
 
-      // Crear una vista previa de la imagen
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -27,7 +26,6 @@ const AddEquipment: React.FC = () => {
     }
   };
 
-  // Maneja el envío del formulario
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -49,10 +47,8 @@ const AddEquipment: React.FC = () => {
         },
       });
 
-      // Agrega el equipo a la lista global
       addEquipment(response.data);
 
-      // Limpia el formulario
       setName('');
       setDescription('');
       setQuantity(0);
@@ -69,57 +65,68 @@ const AddEquipment: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Equipment Name"
-        required
-      />
-      <input
-        type="text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
-        required
-      />
-      <input
-        type="number"
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-        placeholder="Quantity"
-        required
-      />
-      <input
-        type="text"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        placeholder="Location"
-        required
-      />
-      <input
-        type="date"
-        value={acquisitionDate}
-        onChange={(e) => setAcquisitionDate(e.target.value)}
-        required
-      />
-      <input
-        type="file"
-        onChange={handleImageChange}
-        accept="image/*"
-      />
-      {imagePreview && (
-        <div>
-          <img
-            src={imagePreview as string}
-            alt="Image preview"
-            style={{ maxWidth: '200px', maxHeight: '200px', marginTop: '10px' }}
+    <div className="add-equipment-container">
+      <div className="add-equipment-box">
+        <h2>Agregar Equipo</h2>
+        <form onSubmit={handleSubmit} className="add-equipment-form">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nombre del Equipo"
+            required
+            className="add-equipment-input"
           />
-        </div>
-      )}
-      <button type="submit">Add Equipment</button>
-    </form>
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Descripción"
+            required
+            className="add-equipment-input"
+          />
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+            placeholder="Cantidad"
+            required
+            className="add-equipment-input"
+          />
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Ubicación"
+            required
+            className="add-equipment-input"
+          />
+          <input
+            type="date"
+            value={acquisitionDate}
+            onChange={(e) => setAcquisitionDate(e.target.value)}
+            required
+            className="add-equipment-input"
+          />
+          <input
+            type="file"
+            onChange={handleImageChange}
+            accept="image/*"
+            className="add-equipment-input"
+          />
+          {imagePreview && (
+            <div>
+              <img
+                src={imagePreview as string}
+                alt="Vista previa de la imagen"
+                className="image-preview"
+              />
+            </div>
+          )}
+          <button type="submit" className="add-equipment-button">Agregar Equipo</button>
+        </form>
+      </div>
+    </div>
   );
 };
 

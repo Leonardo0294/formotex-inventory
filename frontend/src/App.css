@@ -1,16 +1,33 @@
-/* App.css */
-
 /* Global Styles */
-body {
-  font-family: 'Arial', sans-serif;
+html, body {
+  height: 100%; /* Asegura que el HTML y el body ocupen toda la altura de la ventana */
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
 }
 
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Forza al body a tener al menos la altura de la ventana */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.content-container {
+  flex-grow: 1; /* Asegura que esta sección ocupe el espacio disponible */
+  padding: 2rem;
+}
+
+/* Navbar */
 nav {
-  background-color: #0044cc;
+  background-color: #003399;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -27,85 +44,101 @@ nav ul li {
   margin: 0 15px;
 }
 
-nav ul li a {
+/* Common Link Styles */
+nav ul li a, 
+nav ul li .logout-button {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1.1rem;
   transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block; /* Hacer que el enlace y el botón se comporten como elementos de bloque en línea */
+  padding: 0.8rem 1.2rem; /* Asegura que el padding sea consistente con los botones */
+  border-radius: 6px; /* Igual que los botones */
 }
 
-nav ul li a:hover {
-  color: #f4f4f9;
+nav ul li a:hover, 
+nav ul li .logout-button:hover {
+  color: #e0e0e0;
   transform: scale(1.1);
-}
-
-/* Container Styles */
-.container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Button Styles */
 button {
-  background-color: #0044cc;
+  background-color: #003399;
   color: white;
   border: none;
   padding: 0.8rem 1.2rem;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
+  background-color: #002277;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Logout Button Styles */
+.logout-button {
+  background-color: #003399; /* Igual que los otros botones */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #002277; /* Igual que los otros botones */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer Styles */
+footer {
   background-color: #003399;
-  transform: translateY(-2px);
-}
-
-/* Form Styles */
-form {
-  max-width: 600px;
-  margin: 2rem auto;
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"],
-input[type="password"],
-select {
-  width: 100%;
-  padding: 0.8rem;
-  margin: 1rem 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-h1 {
+  color: white;
+  padding: 1rem;
   text-align: center;
-  margin-top: 2rem;
-  font-size: 2.5rem;
-  color: #0044cc;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Empuja el footer al fondo */
 }
 
-/* Home Page */
+footer p {
+  margin: 0;
+}
+
+/* Home Page Styles */
 .home {
   text-align: center;
 }
 
-.home img.banner-image {
-  display: block;
-  max-width: 100%;
+.banner-image {
+  width: 30%; 
+  height: auto;
+  max-height: 500px; /* Ajusta según el diseño de tu página */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.additional-images {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.additional-image {
+  width: 100%; /* O un tamaño fijo, si es necesario */
+  max-width: 300px; /* Ajusta según el diseño de tu página */
   height: auto;
   border-radius: 8px;
-  margin-top: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive Styles */
@@ -122,11 +155,15 @@ h1 {
   .container {
     padding: 1rem;
   }
+
+  h1 {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 480px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   button {

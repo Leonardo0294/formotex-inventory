@@ -1,0 +1,84 @@
+/* EquipmentList.css */
+
+.equipment-list-container {
+    padding: 20px;
+    background-color: #f4f4f9;
+    min-height: 100vh;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #0044cc;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .equipment-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .equipment-item {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .equipment-item h3 {
+    color: #0044cc;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .equipment-item p {
+    font-size: 1rem;
+    color: #333;
+    margin: 5px 0;
+  }
+  
+  .equipment-item img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+  
+  .equipment-item .button-group {
+    margin-top: 10px;
+  }
+  
+  .equipment-item button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: white;
+    background-color: #0044cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .equipment-item button:hover {
+    background-color: #003399;
+  }
+  
+  .equipment-item button:last-child {
+    background-color: #e60000;
+  }
+  
+  .equipment-item button:last-child:hover {
+    background-color: #cc0000;
+  }
+  
+  .no-equipment-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 50px;
+  }
+  
