@@ -1,9 +1,13 @@
 import { v2 as cloudinary } from 'cloudinary';
+import dotenv from 'dotenv';
+
+// Cargar las variables de entorno desde el archivo .env
+dotenv.config();
 
 cloudinary.config({
-  cloud_name: 'leonardo1',
-  api_key: '341779722638824',
-  api_secret: 'sBq4S6HumeqUrgHY_hg-J2N8Yjc',
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 export default cloudinary;
